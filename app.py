@@ -87,7 +87,6 @@ from typing import Union, Tuple
 if DEBUG:
     import subprocess
     import time
-    from cloudflare_bypasser import _reset_driver as STOP_GUI
     @app.route('/debug', methods=['GET'])
     def debug() -> Union[Response, Tuple[Response, int]]:
         """
@@ -97,8 +96,6 @@ if DEBUG:
         """
         try:
             # Run the debug script
-            STOP_GUI()
-            time.sleep(1)
             result = subprocess.run(['/app/genDebug.sh'], capture_output=True, text=True, check=True)
             if result.returncode != 0:
                 raise Exception(f"Debug script failed: {result.stderr}")

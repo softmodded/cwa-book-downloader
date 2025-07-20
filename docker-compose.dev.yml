@@ -10,7 +10,7 @@ services:
     environment:
       DEBUG: true
       APP_ENV: dev
-      TZ: Europe/Rome
+      TZ: America/New_York
       USE_DOH: true
       CUSTOM_DNS: cloudflare
       # FlareSolverr environment variables
@@ -19,15 +19,16 @@ services:
       FLARESOLVERR_PATH: "/v1"  # Path for FlareSolverr API (default: /v1)
       FLARESOLVERR_TIMEOUT: 60000  # Timeout for FlareSolverr requests (default: 60000)
     volumes:
-      - /tmp/cwa-book-downloader:/tmp/cwa-book-downloader
+      - /srv/media/books:/tmp/cwa-book-downloader
       - /tmp/cwa-book-downloader-log:/var/log/cwa-book-downloader
-  flaresolverr:
-    image: ghcr.io/flaresolverr/flaresolverr:v3.3.22
-    container_name: flaresolverr
-    environment:
-      LOG_LEVEL: info
-      LOG_HTML: false
-      CAPTCHA_SOLVER: none
-      TZ: Europe/Rome
-    ports:
-      - 8191:8191
+    networks:
+      - coolify
+  cwabdoauth:
+    image: 'quay.io/oauth2-proxy/oauth2-proxy:v7.6.0'
+    command: '--config /oauth2-proxy.cfg'
+    expose:
+      - 4180
+    networks:
+      - coolify
+    volumes:
+      - '/opt/yams/config/proxys/cwabd.cfg:/oauth2-proxy.cfg'

@@ -1,5 +1,5 @@
 services:
-  calibre-web-automated-book-downloader-dev:
+  cwabd:
     extends:
       file: ./docker-compose.yml
       service: calibre-web-automated-book-downloader

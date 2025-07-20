@@ -33,3 +33,6 @@ services:
       - coolify
     volumes:
       - '/opt/yams/config/proxys/cwabd.cfg:/oauth2-proxy.cfg'
+networks:
+  coolify:
+    external: true

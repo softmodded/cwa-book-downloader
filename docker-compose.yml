@@ -14,4 +14,4 @@ services:
     volumes:
       # This is where the books will be downloaded to, usually it would be
       # the same as whatever you gave in "calibre-web-automated"
-      - /srv/media/books:/cwa-book-ingest
+      - /srv/media/books/unimported:/cwa-book-ingest

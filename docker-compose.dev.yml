@@ -13,6 +13,7 @@ services:
       TZ: America/New_York
       USE_DOH: true
       CUSTOM_DNS: cloudflare
+      USE_BOOK_TITLE: true
       # FlareSolverr environment variables
       USE_CF_BYPASS: true  # Enable Cloudflare bypass, requires FlareSolverr (default: true)
       FLARESOLVERR_URL: "http://flaresolverr:8191"  # URL of the FlareSolverr service

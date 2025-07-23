@@ -20,7 +20,7 @@ services:
       FLARESOLVERR_PATH: "/v1"  # Path for FlareSolverr API (default: /v1)
       FLARESOLVERR_TIMEOUT: 60000  # Timeout for FlareSolverr requests (default: 60000)
     volumes:
-      - /srv/media/books/unimported:/tmp/cwa-book-downloader
+      - /srv/media/books:/tmp/cwa-book-downloader
       - /tmp/cwa-book-downloader-log:/var/log/cwa-book-downloader
     networks:
       - coolify
